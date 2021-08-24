@@ -1,0 +1,56 @@
+body {
+    background: #b6beb6;
+    font-family: 'Noto Sans JP', sans-serif;
+    overflow: auto; 
+}
+
+.index {
+    width: 100vw;
+    height: 100vh;
+}
+
+.masthead {
+    color: white;
+    min-height: 30rem;
+    width: 100%;
+    height: 100%;
+    padding-top: 8rem;
+    background: url('/img/background.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.masthead {
+    font-size: rem;
+    margin: 0;
+    padding: 0;
+}
+
+#resultado {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+#resultado.ok {
+    background-color: green;
+}
+
+#resultado2 {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+#resultado2.ok {
+    background-color: green;
+}
+
+nav.navbar {
+    background-color: #ff8800;
+}
+
+@media (min-width: 992px) {
+    .masthead h1 {
+        font-size: 3rem;
+    }
+}

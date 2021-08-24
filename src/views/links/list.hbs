@@ -1,0 +1,41 @@
+
+<div class="container input-group mb-3 d-flex justify-content-center">
+<form class="flex inline-flex mt-3" action="/links/search" method="GET">
+<input type="text" name="nombre" placeholder="Solo un nombre o un apellido">
+    <input type="submit" class="btn btn-primary" value="Buscar">
+    <a href="/links/missing" class="btn btn-danger">Faltantes</a>
+
+</form>
+</div>
+
+
+<div class="container p-4">
+    <div class="row">
+
+        {{#each links}}
+
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body">
+                <label class="bg-success text-white"><strong>Trabajador:</strong></label>
+                <h7 class="card-title text-uppercase">
+                    {{trabajador}}
+                </h7>
+                <label class="bg-dark text-white"><strong>Beneficiario:</strong></label>
+                <p class="m-2 mx-auto text-uppercase">{{beneficiario}}</p>
+                <a href="/links/edit/{{id}}" class="btn btn-primary">Registrar Beneficiario</a>
+            </div>
+        </div>
+
+        {{else}}
+
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>Este Delegado no cuenta con Trabajadores</p>
+                <a href="/links/add">Agregar Trabajador</a>
+            </div>
+        </div>
+
+        {{/each}}
+
+    </div>
+</div>

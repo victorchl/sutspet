@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionales S.U.T.S.P.E.T.</title>
+    {{!-- GOOGLE FONTS --}}
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    {{!-- BOOTSTRAP 4 --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {{!-- BOOTSTRAP SELECT --}}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css">
+    {{!-- FONT AWESOME --}}
+    <script src="https://kit.fontawesome.com/8f454e2deb.js" crossorigin="anonymous"></script>
+    {{!-- STYLES --}}
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    {{> navigation }}
+
+    {{> message }}
+
+    {{{ body }}}
+
+    {{!-- SCRIPTS --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+
+<script>
+
+function validarInput(input) {
+	var curp = input.value.toUpperCase(),
+    	resultado = document.getElementById("resultado"),
+        valido = "No válido";
+        
+    if (curpValida(curp)) {
+    	valido = "Válido";
+        resultado.classList.add("ok");
+    } else {
+    	resultado.classList.remove("ok");
+    }
+        
+    resultado.innerText = "CURP: " + curp + "\nFormato: " + valido;
+}
+
+function curpValida(curp) {
+	var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
+    	validado = curp.match(re);
+	
+    if (!validado)  //Coincide con el formato general?
+    	return false;
+    
+    //Validar que coincida el dígito verificador
+    function digitoVerificador(curp17) {
+        //Fuente https://consultas.curp.gob.mx/CurpSP/
+        var diccionario  = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ",
+            lngSuma      = 0.0,
+            lngDigito    = 0.0;
+        for(var i=0; i<17; i++)
+            lngSuma= lngSuma + diccionario.indexOf(curp17.charAt(i)) * (18 - i);
+        lngDigito = 10 - lngSuma % 10;
+        if(lngDigito == 10)
+            return 0;
+        return lngDigito;
+    }
+    if (validado[2] != digitoVerificador(validado[1])) 
+    	return false;
+        
+	return true; //Validado
+}
+
+    </script>
+
+     <script>
+
+function validarInput2(input) {
+	var curp = input.value.toUpperCase(),
+    	resultado2 = document.getElementById("resultado2"),
+        valido = "No válido";
+        
+    if (curpValida(curp)) {
+    	valido = "Válido";
+        resultado2.classList.add("ok");
+    } else {
+    	resultado2.classList.remove("ok");
+    }
+        
+    resultado2.innerText = "CURP: " + curp + "\nFormato: " + valido;
+}
+
+function curpValida(curp) {
+	var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
+    	validado = curp.match(re);
+	
+    if (!validado)  //Coincide con el formato general?
+    	return false;
+    
+    //Validar que coincida el dígito verificador
+    function digitoVerificador(curp17) {
+        //Fuente https://consultas.curp.gob.mx/CurpSP/
+        var diccionario  = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ",
+            lngSuma      = 0.0,
+            lngDigito    = 0.0;
+        for(var i=0; i<17; i++)
+            lngSuma= lngSuma + diccionario.indexOf(curp17.charAt(i)) * (18 - i);
+        lngDigito = 10 - lngSuma % 10;
+        if(lngDigito == 10)
+            return 0;
+        return lngDigito;
+    }
+    if (validado[2] != digitoVerificador(validado[1])) 
+    	return false;
+        
+	return true; //Validado
+}
+
+    </script>
+
+
+
+</body>
+
+</html>

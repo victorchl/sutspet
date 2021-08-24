@@ -1,0 +1,74 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+               <div class="card-body">
+                  <form action="/links/edit/{{links.id}}" method="POST">
+                        <div class="form-group">
+                            <label>Nombre de Trabajador</label>
+                            <input type="text" readonly="readonly" value="{{links.trabajador}}" class="form-control" name="trabajador" placeholder="Nombre de Trabajador" >
+                        </div>
+                        <div class="form-group">
+                            <label>CURP</label>
+                            <input type="text" id="curp_input" oninput="validarInput(this)"  value="{{links.curp}}" class="form-control" name="curp" placeholder="Ingresa CURP" required autofocus>
+                            <a href="https://www.gob.mx/curp/" target="_blank">CLICK PARA BUSCAR TU CURP</a>
+			    <pre id="resultado"></pre>
+                        </div>
+                        <div class="form-group">
+                            <label>Correo Electronico</label>
+                            <input type="text"  value="{{links.mail}}" class="form-control" name="mail" placeholder="Ingresa Correo electronico" >
+                        </div>
+                        <div class="form-group">
+                            <label>Celular</label>
+                            <input type="tel"  value="{{links.cel}}" class="form-control" name="cel" placeholder="Ingresa Numero de celular" pattern="^[1-9]\d{9}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre del Adicional</label>
+                            <input type="text" class="form-control" value="{{links.beneficiario}}" name="beneficiario" placeholder="Nombre Completo Beneficiario" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Edad del Adicional (Hasta 92 años)</label>
+                            <input type="number" min="0" max="92" value="{{links.edad}}" name="edad" class="form-control" placeholder="Edad del Adicional" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Parentesco</label>
+                            <select value="{{links.parentesco}}" name="parentesco" class="form-control" placeholder="Parentesco" required>
+                            <option value="{{links.parentesco}}">{{links.parentesco}}</option>
+                            <option value="MADRE">MAMÁ</option>
+                            <option value="PADRE">PAPÁ</option>
+                            <option value="ESPOSA">ESPOSA</option>
+                            <option value="ESPOSO">ESPOSO</option>
+                            <option value="CONCUBINA">CONCUBINA</option>
+                            <option value="CONCUBINO">CONCUBINO</option>
+                            <option value="HIJA">HIJA</option>
+                            <option value="HIJO">HIJO</option>
+                            <option value="HERMANA">HERMANA</option>
+                            <option value="HERMANO">HERMANO</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>CURP Adicional</label>
+                            <input type="text" id="curp_input" oninput="validarInput2(this)"  value="{{links.curpb}}" class="form-control" name="curpb" placeholder="Ingresa CURP" required>
+                            <a href="https://www.gob.mx/curp/" target="_blank">CLICK PARA BUSCAR TU CURP</a>
+			    <pre id="resultado2"></pre>
+                        </div>
+                      
+
+                        <div class="form-group" hidden>
+                            <input type="number" min="1" max="1" value="1" name="edicion" class="form-control" placeholder="Edad del Adicional" required>
+                        </div>
+
+			  <div class="form-group d-grid gap-2">
+                            <button class="btn btn-success">
+                                GUARDAR CAMBIOS
+                            </button>
+                        </div>
+                  </form> 
+                  <div class="form-group form-group d-grid gap-2">
+                            <button class="btn btn-dark btn-block" onclick="history.back()">
+                                CANCELAR
+                            </button>
+               </div> 
+            </div>
+        </div>
+    </div>
